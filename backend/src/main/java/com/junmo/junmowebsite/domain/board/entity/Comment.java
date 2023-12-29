@@ -1,6 +1,6 @@
-package com.junmo.junmowebsite.board.entity;
+package com.junmo.junmowebsite.domain.board.entity;
 
-import com.junmo.junmowebsite.member.entity.Member;
+import com.junmo.junmowebsite.domain.member.entity.Member;
 import jakarta.persistence.*;
 
 @Entity

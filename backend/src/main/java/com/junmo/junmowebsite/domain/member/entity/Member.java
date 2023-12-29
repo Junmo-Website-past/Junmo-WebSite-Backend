@@ -1,4 +1,4 @@
-package com.junmo.junmowebsite.member.entity;
+package com.junmo.junmowebsite.domain.member.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
