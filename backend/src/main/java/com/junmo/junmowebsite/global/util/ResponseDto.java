@@ -3,7 +3,6 @@ package com.junmo.junmowebsite.global.util;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.http.ResponseEntity;
 
 @Getter
 public class ResponseDto<T> {
