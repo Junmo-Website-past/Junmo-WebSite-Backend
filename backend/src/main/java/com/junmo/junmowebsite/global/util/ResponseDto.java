@@ -1,5 +1,6 @@
 package com.junmo.junmowebsite.global.util;
 
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,14 @@ public class ResponseDto<T> {
                 .message(message)
                 .data(data)
                 .build();
+    }
+
+    // 요청에서 valid에 위배되는 속성값들에 대한 내용들을 list로 응답보내기 위한 생성자
+    public static <T> ResponseDto<List<T>> responseList(final String message, final List<T> data) {
+        return ResponseDto.<List<T>>builder()
+            .message(message)
+            .data(data)
+            .build();
     }
 
 

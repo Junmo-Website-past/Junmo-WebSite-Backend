@@ -26,7 +26,4 @@ public class BoardResponseDto {
                 .build();
     }
 
-
-
-
 }

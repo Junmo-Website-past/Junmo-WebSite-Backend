@@ -1,5 +1,6 @@
 package com.junmo.junmowebsite.domain.board.entity;
 
+import com.junmo.junmowebsite.domain.board.dto.request.BoardRequestDto;
 import com.junmo.junmowebsite.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -28,5 +29,14 @@ public class Board {
         this.name = name;
         this.description = description;
         this.member = member;
+    }
+
+    public void update(BoardRequestDto requestDto) {
+        if(requestDto.getName() != null) {
+            this.name = requestDto.getName();
+        }
+        if(requestDto.getDescription() != null) {
+            this.description = requestDto.getDescription();
+        }
     }
 }
