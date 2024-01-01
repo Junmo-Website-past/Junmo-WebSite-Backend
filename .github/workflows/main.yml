@@ -57,8 +57,10 @@ jobs:
         port: 22
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
           if [ ! -d "/docker-compose" ]; then
-            mkdir /docker-compose
+            sudo mkdir /docker-compose
           fi
           cd /docker-compose
           if [ ! -f "docker-compose.yml" ]; then
@@ -67,3 +69,4 @@ jobs:
             git pull origin main
           fi
           sudo docker-compose up -d
+
