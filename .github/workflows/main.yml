@@ -3,9 +3,9 @@ name: Java CI with Gradle
 # main이 push 할때만 깃허브액션동작
 on:
   push:
-    branches: [ "feature/CICD&deploy" ]
+    branches: [ "feature/CICD_deploy" ]
   pull_request:
-    branches: [ "feature/CICD&deploy" ]
+    branches: [ "feature/CICD_deploy" ]
 
 jobs:
   build:
