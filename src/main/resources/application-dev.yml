@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: junmo-website
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:junmo-website-db;MODE=MYSQL
+      username: junmo
+      password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
