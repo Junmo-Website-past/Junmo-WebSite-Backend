@@ -58,7 +58,7 @@ jobs:
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
           if [ ! -d "/docker-compose" ]; then
-            mkdir /docker-compose
+            sudo mkdir /docker-compose
           fi
           cd /docker-compose
           if [ ! -f "docker-compose.yml" ]; then
