@@ -45,10 +45,15 @@ jobs:
         tags: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
 
 
-  deploy: 
+  deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout docker-compose repository
+      uses: actions/checkout@v3
+      with:
+        repository: Junmo-Website/docker-compose
+        path: docker-compose
     - name: EC2 Docker Compose Update and Run
       uses: appleboy/ssh-action@v1.0.0
       with:
@@ -62,10 +67,7 @@ jobs:
           fi
           sudo chown -R $USER:$USER /docker-compose
           cd /docker-compose
-          if [ ! -f "docker-compose.yml" ]; then
-            git init
-            git remote add origin git@github.com:Junmo-Website/docker-compose.git
-            git pull origin main
-          fi
+          scp -i ${{ secrets.EC2_PRIVATE_KEY }} -r $GITHUB_WORKSPACE/docker-compose/. $USER@${{ secrets.EC2_HOST }}:/docker-compose
           sudo docker-compose up -d
+
 
