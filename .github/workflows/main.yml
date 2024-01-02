@@ -59,8 +59,8 @@ jobs:
         script: |
           if [ ! -d "/docker-compose" ]; then
             sudo mkdir /docker-compose
-            sudo chown $USER:$USER /docker-compose
           fi
+          sudo chown -R $USER:$USER /docker-compose
           cd /docker-compose
           if [ ! -f "docker-compose.yml" ]; then
             git init
