@@ -57,15 +57,6 @@ jobs:
         port: 22
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
-          if [ ! -d "/docker-compose" ]; then
-            sudo mkdir /docker-compose
-            sudo chown $USER:$USER /docker-compose
-          fi
           cd /docker-compose
-          if [ ! -f "docker-compose.yml" ]; then
-            git init
-            git remote add origin git@github.com:Junmo-Website/docker-compose.git
-            git pull origin main
-          fi
           sudo docker-compose up -d
 
