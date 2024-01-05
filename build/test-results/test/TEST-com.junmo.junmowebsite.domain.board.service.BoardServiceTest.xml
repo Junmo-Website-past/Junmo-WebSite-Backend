@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.junmo.junmowebsite.domain.board.service.BoardServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-01-01T14:11:13" hostname="JUNMOCOM" time="0.126">
+  <properties/>
+  <testcase name="removeBoard()를 통해 게시판(Board)을 삭제할 수 있다." classname="com.junmo.junmowebsite.domain.board.service.BoardServiceTest" time="0.081"/>
+  <testcase name="addBoard()를 통해 게시판(Board)을 추가할 수 있다." classname="com.junmo.junmowebsite.domain.board.service.BoardServiceTest" time="0.03"/>
+  <testcase name="findBoard()를 통해 게시판(Board)을 조회할 수 있다." classname="com.junmo.junmowebsite.domain.board.service.BoardServiceTest" time="0.007"/>
+  <testcase name="modifyBoard()를 통해 게시판(Board)을 수정할 수 있다." classname="com.junmo.junmowebsite.domain.board.service.BoardServiceTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
