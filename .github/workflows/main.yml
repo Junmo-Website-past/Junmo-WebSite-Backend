@@ -24,6 +24,8 @@ jobs:
     # Gradle Wrapper 스크립트 파일 (gradlew)에 실행 권한을 부여
     # gradlew wrappe 통해 빌드된거 밀고, jar 파일생성
     - name: Build Spring Project
+      env:
+          SPRING_ACTIVE_PROFILE: prod
       run: |
         chmod +x ./gradlew
         ./gradlew wrapper 
@@ -45,15 +47,10 @@ jobs:
         tags: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
 
 
-  deploy:
+  deploy: 
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout docker-compose repository
-      uses: actions/checkout@v3
-      with:
-        repository: Junmo-Website/docker-compose
-        path: docker-compose
     - name: EC2 Docker Compose Update and Run
       uses: appleboy/ssh-action@v1.0.0
       with:
@@ -62,12 +59,9 @@ jobs:
         port: 22
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
-          if [ ! -d "/docker-compose" ]; then
-            sudo mkdir /docker-compose
-          fi
-          sudo chown -R $USER:$USER /docker-compose
+          docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_PASSWORD }}
           cd /docker-compose
-          scp -i ${{ secrets.EC2_PRIVATE_KEY }} -r $GITHUB_WORKSPACE/docker-compose/. $USER@${{ secrets.EC2_HOST }}:/docker-compose
+          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> .env
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
           sudo docker-compose up -d
-
 
