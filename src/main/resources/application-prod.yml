@@ -5,8 +5,8 @@ spring:
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
       jdbc-url: jdbc:mysql://junmo-website-db01.ct2aoqa2kuhu.ap-northeast-2.rds.amazonaws.com:3360/website?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-      username: ${DATABASE_USERNAME}
-      password: ${DATABASE_PASSWORD}
+      username: ${SPRING_DATABASE_USERNAME}
+      password: ${SPRING_DATABASE_PASSWORD}
   h2:
     console:
       enabled: true
