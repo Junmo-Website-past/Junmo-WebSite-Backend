@@ -67,6 +67,7 @@ jobs:
           export SPRING_ACTIVE_PROFILE=${{ secrets.SPRING_ACTIVE_PROFILE }}
           export DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
           export DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+          export TEST_DATA=test_value
           docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_PASSWORD }}
           cd /docker-compose
           sudo docker-compose pull
