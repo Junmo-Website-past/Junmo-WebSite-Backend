@@ -63,8 +63,8 @@ jobs:
         port: 22
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
-          # export SPRING_ACTIVE_PROFILE='prod'
-          export SPRING_ACTIVE_PROFILE=${{ secrets.SPRING_ACTIVE_PROFILE }}
+          export SPRING_ACTIVE_PROFILE='prod'
+          # export SPRING_ACTIVE_PROFILE=${{ secrets.SPRING_ACTIVE_PROFILE }}
           export DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
           export DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
           export TEST_DATA=test_value
