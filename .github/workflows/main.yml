@@ -47,11 +47,22 @@ jobs:
   deploy: 
     needs: build
     runs-on: ubuntu-latest
-    container:
-      image: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
-      credentials:
+    # container:
+    #   image: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
+    #   credentials:
+    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+    steps:
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+    - name: Pull Docker Image
+      run: docker pull ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
+
         
     steps:
     - name: EC2 Docker Compose Update and Run
