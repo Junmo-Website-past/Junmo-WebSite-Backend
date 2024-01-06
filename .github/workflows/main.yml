@@ -43,13 +43,18 @@ jobs:
         dockerfile: Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
-        build-args: |
-          SPRING_ACTIVE_PROFILE=prod
-
+        
   deploy: 
     needs: build
     runs-on: ubuntu-latest
+
     steps:
+    # - name: Login to DockerHub
+    #   uses: docker/login-action@v3
+    #   with:
+    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+
     - name: EC2 Docker Compose Update and Run
       uses: appleboy/ssh-action@v1.0.0
       with:
@@ -61,6 +66,9 @@ jobs:
           export SPRING_ACTIVE_PROFILE=${{ secrets.SPRING_ACTIVE_PROFILE }}
           export SPRING_DATABASE_USERNAME=${{ secrets.SPRING_DATABASE_USERNAME }}
           export SPRING_DATABASE_PASSWORD=${{ secrets.SPRING_DATABASE_PASSWORD }}
+          echo "SPRING_ACTIVE_PROFILE: $SPRING_ACTIVE_PROFILE"
+          echo "SPRING_DATABASE_USERNAME: $SPRING_DATABASE_USERNAME"
+          echo "SPRING_DATABASE_PASSWORD: $SPRING_DATABASE_PASSWORD"
           cd /docker-compose
           sudo -E docker-compose pull
           sudo -E docker-compose up -d --force-recreate
