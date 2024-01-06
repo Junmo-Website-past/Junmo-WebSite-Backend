@@ -45,10 +45,10 @@ jobs:
         dockerfile: Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
-        build-args: |
-          SPRING_ACTIVE_PROFILE=prod
-          DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
-          DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+        # build-args: |
+        #   SPRING_ACTIVE_PROFILE=prod
+        #   DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
+        #   DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
 
 
   deploy: 
@@ -63,6 +63,9 @@ jobs:
         port: 22
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
+          export SPRING_ACTIVE_PROFILE=prod
+          export DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
+          export DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
           docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_PASSWORD }}
           cd /docker-compose
           sudo docker-compose pull
