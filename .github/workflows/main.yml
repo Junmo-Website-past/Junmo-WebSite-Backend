@@ -64,13 +64,9 @@ jobs:
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
           # export SPRING_ACTIVE_PROFILE=prod
-          # export SPRING_ACTIVE_PROFILE=${{ secrets.SPRING_ACTIVE_PROFILE }}
-          # export SPRING_DATABASE_USERNAME=${{ secrets.SPRING_DATABASE_USERNAME }}
-          # export SPRING_DATABASE_PASSWORD=${{ secrets.SPRING_DATABASE_PASSWORD }}
-          export SPRING_ACTIVE_PROFILE01=${{ secrets.SPRING_ACTIVE_PROFILE }}
-          export SPRING_DATABASE_USERNAME01=${{ secrets.SPRING_DATABASE_USERNAME }}
-          export SPRING_DATABASE_PASSWORD01=${{ secrets.SPRING_DATABASE_PASSWORD }}
-          docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_PASSWORD }}
+          export SPRING_ACTIVE_PROFILE=${{ secrets.SPRING_ACTIVE_PROFILE }}
+          export SPRING_DATABASE_USERNAME=${{ secrets.SPRING_DATABASE_USERNAME }}
+          export SPRING_DATABASE_PASSWORD=${{ secrets.SPRING_DATABASE_PASSWORD }}
           cd /docker-compose
           sudo docker-compose pull
           sudo docker-compose up -d --force-recreate
