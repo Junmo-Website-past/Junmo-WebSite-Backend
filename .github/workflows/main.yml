@@ -3,9 +3,9 @@ name: Java CI with Gradle
 # main이 push 할때만 깃허브액션동작
 on:
   push:
-    branches: [ "feature/CICD_deploy" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "feature/CICD_deploy" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -45,6 +45,10 @@ jobs:
         dockerfile: Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
+        build-args: |
+          SPRING_ACTIVE_PROFILE=prod
+          DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
 
 
   deploy: 
@@ -61,7 +65,5 @@ jobs:
         script: |
           docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_PASSWORD }}
           cd /docker-compose
-          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> .env
-          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
           sudo docker-compose up -d
 
