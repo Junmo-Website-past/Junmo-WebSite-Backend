@@ -43,6 +43,8 @@ jobs:
         dockerfile: Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
+        build-args: |
+          SPRING_ACTIVE_PROFILE=prod
 
   deploy: 
     needs: build
