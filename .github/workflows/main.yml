@@ -64,7 +64,7 @@ jobs:
       run: docker pull ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
 
         
-    steps:
+    # steps:
     - name: EC2 Docker Compose Update and Run
       uses: appleboy/ssh-action@v1.0.0
       with:
