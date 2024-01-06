@@ -24,8 +24,6 @@ jobs:
     # Gradle Wrapper 스크립트 파일 (gradlew)에 실행 권한을 부여
     # gradlew wrappe 통해 빌드된거 밀고, jar 파일생성
     - name: Build Spring Project
-      env:
-          SPRING_ACTIVE_PROFILE: prod
       run: |
         chmod +x ./gradlew
         ./gradlew wrapper 
@@ -45,11 +43,6 @@ jobs:
         dockerfile: Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
-        # build-args: |
-        #   SPRING_ACTIVE_PROFILE=prod
-        #   DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
-        #   DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
-
 
   deploy: 
     needs: build
