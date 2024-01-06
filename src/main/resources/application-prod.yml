@@ -8,10 +8,11 @@ spring:
 #      username: ${SPRING_DATABASE_USERNAME}
 #      password: ${SPRING_DATABASE_PASSWORD}
   datasource:
-    url: jdbc:mysql://junmo-website-db01.ct2aoqa2kuhu.ap-northeast-2.rds.amazonaws.com:3306/website?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://junmo-website-db01.ct2aoqa2kuhu.ap-northeast-2.rds.amazonaws.com:3306/website
     username: ${SPRING_DATABASE_USERNAME}
     password: ${SPRING_DATABASE_PASSWORD}
-    driver-class-name: com.mysql.cj.jdbc.Driver
+
   h2:
     console:
       enabled: true
