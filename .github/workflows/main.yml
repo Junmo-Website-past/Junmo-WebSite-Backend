@@ -39,7 +39,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build and push Docker Spring Project Image
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v5
       with:
         context: .
         dockerfile: Dockerfile
