@@ -6,6 +6,7 @@ import com.junmo.junmowebsite.domain.board.service.BoardService;
 import com.junmo.junmowebsite.global.util.ResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,12 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
 
     private final BoardService boardService;
+    private Environment env;
+
+    @GetMapping("/env")
+    public String getEnvironmentVariable() {
+        return "SPRING_ACTIVE_PROFILE: " + env.getProperty("SPRING_ACTIVE_PROFILE");
+    }
 
     @PostMapping
     public ResponseEntity<ResponseDto<BoardResponseDto>> boardAdd(
