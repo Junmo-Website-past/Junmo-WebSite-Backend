@@ -59,6 +59,9 @@ jobs:
           export SPRING_ACTIVE_PROFILE=${{ secrets.SPRING_ACTIVE_PROFILE }}
           export SPRING_DATABASE_USERNAME=${{ secrets.SPRING_DATABASE_USERNAME }}
           export SPRING_DATABASE_PASSWORD=${{ secrets.SPRING_DATABASE_PASSWORD }}
+          echo "SPRING_ACTIVE_PROFILE: $SPRING_ACTIVE_PROFILE"
+          echo "SPRING_DATABASE_USERNAME: $SPRING_DATABASE_USERNAME"
+          echo "SPRING_DATABASE_PASSWORD: $SPRING_DATABASE_PASSWORD"
           cd /docker-compose
           sudo -E docker-compose pull
           sudo -E docker-compose up -d --force-recreate
