@@ -47,6 +47,12 @@ jobs:
   deploy: 
     needs: build
     runs-on: ubuntu-latest
+    container:
+      image: ${{ secrets.DOCKERHUB_REPOSITORY }}/junmo-website-backend:latest
+      credentials:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        
     steps:
     - name: EC2 Docker Compose Update and Run
       uses: appleboy/ssh-action@v1.0.0
