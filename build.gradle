@@ -36,6 +36,12 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	implementation 'mysql:mysql-connector-java:8.0.33'
 
+	// yml (use .env in yml file)
+	implementation 'org.yaml:snakeyaml:+'
+
+	// dotenv-java (use .env in java file)
+	implementation 'io.github.cdimascio:java-dotenv:+'
+
 	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
