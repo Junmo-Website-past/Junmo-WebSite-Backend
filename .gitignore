@@ -596,6 +596,9 @@ FodyWeavers.xsd
 #.env
 .env
 
+#.probe
+*.probe
+
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
